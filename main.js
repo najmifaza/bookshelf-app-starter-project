@@ -86,7 +86,7 @@ function renderBooks(filterTitle = "") {
   }
 }
 
-// Membuat Elemen HTML Buku sesuai dengan template dan atribut wajib
+// Membuat Elemen HTML Buku sesuai dengan template dan atribut wajib// Memastikan elemen penulis menggunakan data-testid="bookItemAuthor"
 function createBookElement(book) {
   const container = document.createElement("div");
   container.setAttribute("data-bookid", book.id);
@@ -96,17 +96,17 @@ function createBookElement(book) {
   titleElement.setAttribute("data-testid", "bookItemTitle");
   titleElement.innerText = book.title;
 
+  // PERBAIKAN DI SINI:
   const authorElement = document.createElement("p");
-  authorElement.setAttribute("data-testid", "bookItemAuthor");
+  authorElement.setAttribute("data-testid", "bookItemAuthor"); // Memastikan data-testid sesuai ketentuan
   authorElement.innerText = `Penulis: ${book.author}`;
 
   const yearElement = document.createElement("p");
-  authorElement.setAttribute("data-testid", "bookItemYear");
+  yearElement.setAttribute("data-testid", "bookItemYear"); // Memastikan tahun juga memiliki testid yang benar
   yearElement.innerText = `Tahun: ${book.year}`;
 
   const buttonContainer = document.createElement("div");
 
-  // Tombol Pindah Rak (Selesai/Belum Selesai)
   const isCompleteButton = document.createElement("button");
   isCompleteButton.setAttribute("data-testid", "bookItemIsCompleteButton");
   isCompleteButton.innerText = book.isComplete
@@ -116,7 +116,6 @@ function createBookElement(book) {
     toggleBookStatus(book.id);
   });
 
-  // Tombol Hapus
   const deleteButton = document.createElement("button");
   deleteButton.setAttribute("data-testid", "bookItemDeleteButton");
   deleteButton.innerText = "Hapus Buku";
@@ -124,7 +123,6 @@ function createBookElement(book) {
     deleteBook(book.id);
   });
 
-  // Tombol Edit
   const editButton = document.createElement("button");
   editButton.setAttribute("data-testid", "bookItemEditButton");
   editButton.innerText = "Edit Buku";
